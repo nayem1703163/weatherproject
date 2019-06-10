@@ -1,0 +1,72 @@
+
+
+  <!DOCTYPE html>
+  <html lang="en" dir="ltr">
+    <head>
+      <meta charset="utf-8">
+      <title>Weather app</title>
+      <style>
+          *{
+      margin: 0px;
+      padding: 0px;
+      box-sizing: border-box;
+    }
+    body{
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      background-image: linear-gradient(to bottom right, red, yellow);
+      text-align: center;
+    }
+    .location,.tem{
+      height: 30vh;
+      width: 50%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    
+    }
+    .tem{
+      flex-direction: column;
+    }
+    .degree-section{
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+    .degree-section span{
+      margin: 10px;
+      font-size: 30px;
+    }
+    .degree-section h2{
+    
+      font-size: 40px;
+    }
+      
+      </style>
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  
+  
+    </head>
+    <body>
+        <div class="container">
+              
+              <form class="form-inline" action="{% url 'home' %}" method="POST" >
+                      {% csrf_token %}
+                      <div class="form-group">
+                        
+                          <label class="sr-only" for="inlineFormInputName2">City</label>
+                          <input name='fname' type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName1" placeholder="City">
+                      </div>
+                              
+                          <button type="submit" class="btn btn-primary mb-2">Search</button>
+                      </form>
+                      <h1>SORRY Either you inserted wrong city name or APIXU couldn't find the city</h1>
+        </div>
+      
+    </body>
+  </html>
+  

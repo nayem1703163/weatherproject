@@ -1,0 +1,89 @@
+
+
+  <!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Weather app</title>
+    <style>
+        *{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+  }
+  body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+    text-align: center;
+  }
+  .location,.tem{
+    height: 30vh;
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  
+  }
+  .tem{
+    flex-direction: column;
+  }
+  .degree-section{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  .degree-section span{
+    margin: 10px;
+    font-size: 30px;
+  }
+  .degree-section h2{
+  
+    font-size: 40px;
+  }
+    
+    </style>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+  </head>
+  <body>
+      <div class="container">
+        <h1>The app developed in django 2.2.1 with APIUX API where user can add city in app to see weather info...</h1>
+            
+            <form class="form-inline" action="{% url 'home' %}" method="POST" >
+                    {% csrf_token %}
+                    <div class="form-group">
+                      
+                        <label class="sr-only" for="inlineFormInputName2">City</label>
+                        <input name='fname' type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName1" placeholder="City">
+                        <button type="submit" class="btn btn-primary ">Search</button>
+                    </div>
+                            
+                    
+                    </form>
+
+            <h1>{{cityweatherkey.citykey}}</h1>
+            <h1 class="location-timezone">Date&Time:{{cityweatherkey.timekey}}</h1>
+            
+                <div class="degree-section">
+                    <h2 class="tem-degree">Temperature:{{cityweatherkey.tempkey}}</h2>
+                    <span>C</span>
+                    <label for=""><figure class="image is-50x50">
+                        <img src="{{cityweatherkey.iconkey}}" alt="Image">
+                    </figure></label>
+                </div>
+               
+                  <h3>Feelslike:{{cityweatherkey.feelslikekey}}C</h3>
+                
+                <h3>windSpeed:{{cityweatherkey.windspeeddkey}}Kph</h3>
+                {{cityweatherkey.errorme}}
+             
+      </div>
+  
+  </body>
+</html>
